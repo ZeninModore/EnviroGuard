@@ -14,7 +14,7 @@ void setup() {
 }
 
 void loop() {
-    if (unoSerial.available()) {
+    if(unoSerial.available()){
         String message = unoSerial.readStringUntil('\n');
 
         Serial.print("Received from Uno: ");
