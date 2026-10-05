@@ -1,0 +1,48 @@
+/* Shield main logo */
+.shieldMainLogo{
+    fill: rgb(30, 197, 189);
+}
+
+/* Notification svg (Red dot) */
+.notificationActiveIcon{
+    position: absolute;
+    top: -3px;
+    right: -4px;
+    fill: rgb(202, 24, 24);
+}
+
+/* Active status svg (Green and red dot) */
+.activeStatusIcon{
+    fill: rgb(1, 192, 1);
+}
+
+/* Settings svg */
+.mainSettingsIcon,
+.notificationIcon{
+    fill: rgb(237, 237, 237);
+}
+
+/* Dashboard svg */
+.dashboardIcon,
+.analyticsIcon,
+.alertsIcon,
+.historyIcon,
+.settingsIcon{
+    height: 30px;
+    width: 30px;
+}
+
+/* Arrow close svg */
+.arrowCloseIcon{
+    fill: white;
+}
+
+/* Sensor logo svg */
+.temperatureIcon,
+.humidityIcon,
+.gasIcon,
+.motionIcon{
+    height: 30px;
+    width: 30px;
+    fill: white;
+}

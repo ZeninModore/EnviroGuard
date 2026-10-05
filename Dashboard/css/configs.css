@@ -1,0 +1,15 @@
+button:enabled{
+    cursor: pointer;
+}
+
+button{
+    border: none;
+    background-color: transparent;
+}
+
+p,
+span,
+h2,
+h3{
+    color: rgb(237, 237, 237);
+}

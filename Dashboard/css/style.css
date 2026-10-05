@@ -1,0 +1,209 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Google Sans Flex", sans-serif;
+}
+
+/* Main container */
+.mainStructureContainer{
+    display: grid;
+    background-color: #0B1220;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "headerBar headerBar"
+    "leftBar mainContent";
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Header bar */
+.headerBar{
+    grid-area: headerBar;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+/* Logo container */
+.logoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Logo text */
+.logoText{
+    color: rgb(237, 237, 237);
+    font-weight: 400;
+}
+
+/* Dashboard container (Notif, status, settings) */
+.dashboardActionContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+/* System state (Online or offline) */
+.systemStateContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* System state text */
+.systemStateText{
+    color: rgb(237, 237, 237);
+    font-weight: 400;
+}
+
+/* Notification button */
+.notificationBtn{
+    position: relative;
+}
+
+
+/* Left bar */
+.leftBar{
+    grid-area: leftBar;
+    display: grid;
+    position: relative;
+    grid-template-rows: repeat(auto-fit, auto);
+    width: 180px;
+    height: 200px;
+    background-color: #111827;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Left bar button */
+.leftBarBtn{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    text-align: start;
+    padding: 0 15px;
+    gap: 10px;
+    color: rgb(237, 237, 237);
+}
+
+/* Close left bar button */
+.arrowCloseBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    right: -25px;
+}
+
+
+/* Main content */
+.mainContent{
+    grid-area: mainContent;
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+    gap: 50px;
+}
+
+/* Greetings container */
+.greetingsContainer{
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Status overview container */
+.statusOverviewContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* Sensor readings container */
+.sensorReadingsContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 30px;
+}
+
+/* Temperature container */
+.temperatureContainer,
+.humidityContainer,
+.gasContainer,
+.motionContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #172033;
+    border-radius: 30px;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Temperature logo container */
+.temperatureLogoContainer,
+.humidityLogoContainer,
+.gasLogoContainer,
+.motionLogoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Temperature results container */
+.temperatureResultsContainer,
+.humidityResultsContainer,
+.gasResultsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* System alerts & statuses */
+.systemStatusContainer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 30px;
+}
+
+/* Recent alerts container */
+.recentAlertsContainer,
+.systemContainer,
+.systemSensorStatusContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #172033;
+    border-radius: 30px;
+    padding: 20px;
+    gap: 10px;
+}
+
+/* Alert insert container */
+.alertInsertContainer,
+.systemInfoContainer,
+.systemSensorStatusInfoContainer{
+    display: grid;
+}
+
+/* Recent alert text */
+.recentAlertText,
+.systemText,
+.systemSensorStatusText{
+    text-align: center;
+}
