@@ -207,3 +207,11 @@
 .systemSensorStatusText{
     text-align: center;
 }
+
+/* Status text color */
+.temperatureStatusText,
+.humidityStatusText,
+.gasStatusText,
+.motionStatusResult{
+    color: rgb(10, 207, 10);
+}
