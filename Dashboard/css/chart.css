@@ -1,0 +1,12 @@
+.sensorChartContainer {
+    width: 100%;
+}
+
+#sensorChart {
+    width: 100%;
+    height: 350px;
+    display: block;
+    background-color: #172033;
+    border-radius: 50px;
+    color: white;
+}

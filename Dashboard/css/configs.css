@@ -10,6 +10,7 @@ button{
 p,
 span,
 h2,
-h3{
+h3,
+div{
     color: rgb(237, 237, 237);
 }
