@@ -2,7 +2,9 @@
     width: 100%;
 }
 
-#sensorChart {
+#sensorChart,
+#humidityChart,
+#temperatureChart{
     width: 100%;
     height: 350px;
     display: block;
