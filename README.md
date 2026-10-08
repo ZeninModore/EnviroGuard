@@ -1,303 +1,266 @@
-EnviroGuard — System User Guide
-1. System Overview
+# **EnviroGuard: Smart Environmental Monitoring and Security System**
 
-EnviroGuard is a smart environmental monitoring and security system that collects data from connected sensors and displays the information through a web-based dashboard.
+## **How to Use EnviroGuard**
 
-The system monitors:
+EnviroGuard is a monitoring system that collects environmental and security information such as **temperature, humidity, gas/smoke level, and motion**. The collected sensor data is sent from the Arduino and ESP32 to the backend API, where it can be stored and displayed on the web dashboard.
 
-Temperature
-Humidity
-Gas/Smoke level
-Motion
-Alarm status
-System health and connection status
+---
 
-The Arduino Uno collects the sensor readings and communicates them to the ESP32. The ESP32 sends the collected data to the backend API, where the data can be stored and accessed by the web dashboard.
+## **Step 1 — Start the Hardware**
 
-2. System Requirements
+1. Connect the **Arduino Uno** to the computer using a USB cable.
+2. Make sure the sensors are properly connected:
 
-Before using EnviroGuard, make sure the following components are available and properly connected:
+   * **DHT22** — Temperature and humidity
+   * **PIR Sensor** — Motion detection
+   * **MQ-2** — Gas and smoke detection
+   * **Buzzer** — Alarm notification
+3. Make sure the **ESP32** is connected and communicating with the Arduino through the appropriate connection.
+4. Check that the required power and ground connections are properly connected.
 
-Hardware
-Arduino Uno
-ESP32
-DHT22 temperature and humidity sensor
-PIR motion sensor
-MQ-2 gas/smoke sensor
-Buzzer
-Logic level shifter
-Breadboard and jumper wires
-USB cables
-Computer connected to the same network as the ESP32
-Software
-Visual Studio Code
-PlatformIO
-Node.js
-EnviroGuard backend/API
-Web browser
-3. Starting the System
-Step 1 — Connect the Hardware
+**Important:** Check all wiring before powering the system to prevent incorrect readings or hardware problems.
 
-Connect the Arduino Uno, ESP32, sensors, buzzer, and logic level shifter according to the system wiring diagram.
+---
 
-Make sure that:
+## **Step 2 — Start the Arduino and ESP32**
 
-The DHT22 is connected to the Arduino Uno.
-The PIR sensor is connected to the Arduino Uno.
-The MQ-2 sensor is connected to the Arduino Uno.
-The buzzer is connected to the Arduino Uno.
-The Arduino Uno and ESP32 communicate through the appropriate serial connection.
-The logic level shifter is used where necessary between the 5V Arduino and 3.3V ESP32 signals.
-All components share the required ground connections.
-4. Start the Arduino Uno
-Step 2 — Connect the Arduino Uno
+1. Open the project in **Visual Studio Code with PlatformIO**.
+2. Connect the Arduino Uno and ESP32 to the computer.
+3. Upload the appropriate program to each board.
+4. Open the **Serial Monitor**.
+5. Make sure the serial communication speed is configured correctly, such as **9600 baud**.
+6. Verify that sensor readings are being received.
 
-Connect the Arduino Uno to the computer using a USB cable.
+The Arduino should collect the sensor readings and send the data through the communication system.
 
-Open the EnviroGuard Arduino project in Visual Studio Code with PlatformIO.
+---
 
-Check that the correct board and serial port are selected.
+## **Step 3 — Start the Backend API**
 
-Step 3 — Upload the Arduino Program
+1. Open a terminal in the backend project folder.
+2. Start the backend server.
+3. Wait for the server to finish starting.
+4. Check the terminal for the server address and port.
 
-Upload the Arduino Uno program using PlatformIO.
-
-The program initializes the sensors and continuously collects:
-
-Temperature
-Humidity
-Gas/smoke readings
-Motion status
-
-The Arduino also evaluates the configured alarm conditions and controls the buzzer when an alarm condition is detected.
-
-5. Start the ESP32
-Step 4 — Connect the ESP32
-
-Connect the ESP32 to the computer using its USB cable.
-
-Open the ESP32 project in Visual Studio Code.
-
-Make sure the ESP32 is connected to the same network that will be used by the backend server.
-
-Step 5 — Upload the ESP32 Program
-
-Upload the ESP32 program using PlatformIO.
-
-The ESP32 receives sensor data from the Arduino Uno and prepares the information for communication with the EnviroGuard backend.
-
-Open the Serial Monitor if necessary to verify that the ESP32 is receiving sensor data correctly.
-
-6. Start the Backend API
-Step 6 — Open the Backend Project
-
-Open a terminal in the EnviroGuard backend project directory.
-
-Install the required Node.js dependencies if this is the first time running the project.
-
-Step 7 — Start the Server
-
-Start the EnviroGuard backend server using the configured Node.js command.
-
-Once the server starts successfully, the API will be available through the configured local address.
+The backend provides the API endpoints used to receive, process, store, and retrieve sensor information.
 
 For example:
 
-http://localhost:3000
+**Health Check:**
+`GET /health`
 
-The backend provides the API endpoints used by the dashboard and communicates with the database.
+A successful health check indicates that the backend and its required services are operating correctly.
 
-7. Check the System Health
-Step 8 — Test the Health Endpoint
+---
 
-Open the following endpoint in a browser:
+## **Step 4 — Check the Database**
 
-http://localhost:3000/health
+Before using the dashboard, make sure the database is available.
 
-The health endpoint checks whether the system services are operating correctly.
+The system stores sensor information such as:
 
-A successful response indicates that the backend and its required services are available.
+* Temperature
+* Humidity
+* Gas/smoke level
+* Motion status
+* Alarm status
+* Date and time of the recorded reading
 
-If the endpoint returns:
+The database allows previous sensor readings to be retrieved and used for monitoring and historical information.
 
-503 Service Unavailable
+---
 
-this means that one or more required services are currently unavailable or not ready. Check that the backend server and required database/device connections are running.
+## **Step 5 — Open the EnviroGuard Dashboard**
 
-8. Open the EnviroGuard Dashboard
-Step 9 — Open the Web Dashboard
+1. Open the web browser.
+2. Open the EnviroGuard dashboard.
+3. Wait for the dashboard to load.
+4. Check the system information and sensor displays.
 
-Open the EnviroGuard dashboard in a web browser.
+The dashboard provides a visual interface for monitoring the current condition of the environment.
 
-The dashboard provides a centralized interface for viewing the environmental and security information collected by the system.
+---
 
-The dashboard displays the latest available sensor information and system status.
+## **Step 6 — Monitor Temperature and Humidity**
 
-9. View Sensor Data
-Step 10 — Monitor Temperature and Humidity
+The **Temperature** and **Humidity** sections display the latest readings collected by the DHT22 sensor.
 
-The temperature and humidity values collected by the DHT22 sensor are displayed on the dashboard.
+The user should regularly check these values to determine whether the environment is within the expected condition.
 
-The user can observe the current:
+For example:
 
-Temperature
-Humidity
-Last updated time
+**Temperature:** 28.5 °C
+**Humidity:** 70.2 %
 
-The values are periodically updated as new sensor readings are received.
+If the temperature reaches the configured alarm threshold, the system can activate the corresponding alarm.
 
-Step 11 — Monitor Gas/Smoke Level
+---
 
-The MQ-2 sensor provides a gas/smoke reading.
+## **Step 7 — Monitor Gas and Smoke Levels**
 
-The dashboard displays the current gas/smoke level so the user can monitor changes in the environment.
+The **Gas/Smoke** section displays the reading collected by the MQ-2 sensor.
 
-If the configured gas threshold is exceeded, the system can activate the alarm.
+The user can monitor the value to determine whether the detected gas or smoke level has increased.
 
-Step 12 — Monitor Motion
+If the reading exceeds the configured threshold, the system can identify it as a potential environmental hazard and activate the gas alarm.
 
-The PIR sensor detects movement within its detection range.
+**Note:** MQ-2 readings are sensor values used for monitoring and should not be interpreted as an exact measurement of a specific gas concentration unless the sensor has been properly calibrated for that purpose.
 
-The dashboard displays the current motion status.
+---
 
-The motion status can indicate whether movement has been detected by the sensor.
+## **Step 8 — Monitor Motion Detection**
 
-If motion-based alarms are enabled, detecting motion can also trigger the system alarm.
+The **Motion** section displays the current state of the PIR sensor.
 
-10. Monitor the Alarm
-Step 13 — Check Alarm Status
+The system can display whether motion is currently detected.
 
-The dashboard displays the current alarm status.
+For example:
 
-The alarm can be triggered when an enabled sensor exceeds its configured threshold or detects a configured security condition.
+**Motion: Detected**
+
+or
+
+**Motion: No Motion**
+
+If motion monitoring is enabled, the system can also trigger the configured alarm response.
+
+---
+
+## **Step 9 — Check the Alarm Status**
+
+The dashboard provides an indication of the current **alarm status**.
+
+The alarm can be triggered when a monitored condition exceeds its configured threshold.
 
 Possible alarm sources include:
 
-High temperature
-High gas/smoke level
-Detected motion
+* **Temperature alarm**
+* **Gas/smoke alarm**
+* **Motion alarm**
 
-The buzzer provides a physical indication when an alarm condition is active.
+The alarm configuration determines which conditions are allowed to activate the buzzer.
 
-11. Monitor System Information
-Step 14 — Check the System Status
+---
 
-The dashboard also provides system information such as:
+## **Step 10 — Check the Latest Update**
 
-Last updated time
-Current date
-Time zone
-Connection/system status
-API/system health
+The dashboard displays the time and date associated with the latest sensor update.
 
-This allows the user to determine whether the displayed sensor readings are recent and whether the monitoring system is operating normally.
-
-12. View Historical Data
-Step 15 — View Recorded Sensor Data
-
-Sensor readings sent to the backend can be stored in the database.
-
-The stored information may include:
-
-Temperature
-Humidity
-Gas/smoke level
-Motion status
-Alarm status
-Date and time of the reading
-
-Historical data can be used to observe environmental changes and review previous alarm events.
-
-13. Respond to an Alarm
-Step 16 — Identify the Alarm Source
-
-When an alarm is activated, check the dashboard to determine which sensor caused the alarm.
+The user can use this information to determine whether the displayed readings are current.
 
 For example:
 
-High Temperature:
-Check the monitored environment for excessive heat.
+**Last Updated:** 11:33:07 AM
+**Date:** 10/08/2026
+**UTC:** +8
 
-High Gas/Smoke Level:
-Check the area for smoke, gas, or other possible sources affecting the MQ-2 sensor.
+If the displayed time stops updating, the user should check the connection between the hardware, ESP32, backend API, and dashboard.
 
-Motion Detected:
-Check the monitored area to determine whether the detected movement is expected.
+---
 
-Step 17 — Check the Physical Environment
+## **Step 11 — View Historical Sensor Data**
 
-After identifying the alarm source, inspect the monitored area and take the appropriate safety action.
+The system can store sensor readings in the database.
 
-If the alarm appears to be caused by an abnormal environmental condition, address the source before continuing normal operation.
+The user can use the available history functionality to review previous readings and observe changes in:
 
-14. Stopping the System
-Step 18 — Stop the Dashboard
+* Temperature
+* Humidity
+* Gas/smoke levels
+* Motion events
+* Alarm events
 
-Close the EnviroGuard dashboard or web browser.
+Historical data can help identify unusual environmental conditions or repeated security events.
 
-Step 19 — Stop the Backend
+---
 
-Stop the backend server through the terminal using the appropriate stop command.
+## **Step 12 — Respond to an Alarm**
 
-Step 20 — Disconnect the Hardware
+When an alarm is activated:
 
-After the backend has been stopped, disconnect the Arduino Uno and ESP32 from the computer if the system is no longer required.
+1. Check the dashboard to identify the condition that triggered the alarm.
+2. Check the current sensor readings.
+3. If the alarm is caused by **high temperature**, inspect the environment for an abnormal heat source.
+4. If the alarm is caused by **gas/smoke**, check the area for smoke, gas leaks, or other possible hazards.
+5. If the alarm is caused by **motion**, check the monitored area and determine whether the movement is expected.
+6. Take the appropriate safety action based on the situation.
 
-For safety, disconnect the power before modifying any wiring or sensors.
+**Do not rely solely on EnviroGuard for emergency or life-safety decisions.**
 
-15. Basic Troubleshooting
-Dashboard does not display sensor data
+---
 
-Check that:
+## **Step 13 — Stop the System**
 
-The Arduino Uno is powered.
-The sensors are properly connected.
-The ESP32 is powered.
-The ESP32 is receiving data from the Arduino.
-The backend server is running.
-The computer and ESP32 are connected to the correct network.
-The API is accessible.
-/health returns 503 Service Unavailable
+When monitoring is finished:
 
-Check that the backend server is running and that its required services, such as the database or device connection, are available.
+1. Stop the backend server.
+2. Close the EnviroGuard dashboard.
+3. Stop the Arduino and ESP32 programs if necessary.
+4. Disconnect the USB cables.
+5. If applicable, disconnect the external power supply.
 
-ESP32 displays unreadable/garbled serial data
+Make sure the hardware is safely powered off before changing any wiring.
 
-Check that the Serial Monitor baud rate matches the baud rate configured in the ESP32 program.
+---
 
-Sensor values appear incorrect
+# **Basic System Usage Flow**
+
+**1. Connect Hardware**
+↓
+**2. Start Arduino and ESP32**
+↓
+**3. Collect Sensor Readings**
+↓
+**4. Send Data to the Backend API**
+↓
+**5. Store Data in the Database**
+↓
+**6. Open EnviroGuard Dashboard**
+↓
+**7. Monitor Current Sensor Data**
+↓
+**8. Check Alerts and Alarm Status**
+↓
+**9. Review Historical Data When Needed**
+
+---
+
+# **Troubleshooting**
+
+### **Dashboard does not load**
+
+Check that the backend server is running and that the dashboard is using the correct API address.
+
+### **Health status shows 503 Service Unavailable**
+
+A **503 Service Unavailable** response generally means that the backend server is reachable, but one or more required services or dependencies are currently unavailable. Check the backend terminal and database connection.
+
+### **Sensor values are not updating**
 
 Check:
 
-Sensor wiring.
-Sensor power supply.
-Ground connections.
-Sensor configuration in the Arduino code.
-Analog voltage levels, particularly for the MQ-2 when communicating with the ESP32.
-16. Normal Operating Procedure
+* Arduino USB connection
+* ESP32 connection
+* Sensor wiring
+* Serial communication
+* Baud rate
+* Backend server
+* API connection
 
-The complete normal operating sequence is:
+### **Alarm does not activate**
 
-1. Connect hardware
-↓
-2. Start Arduino Uno
-↓
-3. Start ESP32
-↓
-4. Verify ESP32 receives sensor data
-↓
-5. Start backend/API server
-↓
-6. Check /health endpoint
-↓
-7. Open EnviroGuard dashboard
-↓
-8. Monitor temperature and humidity
-↓
-9. Monitor gas/smoke level
-↓
-10. Monitor motion status
-↓
-11. Monitor alarm status
-↓
-12. Review historical data when needed
+Check that the corresponding alarm is enabled in the system configuration and that the sensor reading has exceeded its configured threshold.
+
+### **Dashboard shows old data**
+
+Check the **Last Updated** time. If it is not changing, check the communication between the hardware, API, database, and dashboard.
+
+---
+
+# **Normal Operating Sequence**
+
+For normal operation, the recommended sequence is:
+
+**Hardware → Arduino → ESP32 → Backend API → Database → Dashboard**
+
+The user primarily interacts with the **EnviroGuard dashboard**, while the hardware and backend components operate in the background to collect, transmit, process, and store sensor data.
